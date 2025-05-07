@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, request
 main = Flask(__name__)
 
+usuarios_lista = []
+
 
 # 1- Criar Usuarios
-usuarios_lista = []
 @main.route('/usuarios', methods=['POST'])
 def criar_usuario():
     dados = request.get_json()
