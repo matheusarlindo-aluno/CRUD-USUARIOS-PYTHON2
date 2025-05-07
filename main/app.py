@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request
-main = Flask(__name__)
+app = Flask(__name__)
 
 usuarios_lista = []
 
 
 # 1- Criar Usuarios
-@main.route('/usuarios', methods=['POST'])
+@app.route('/usuarios', methods=['POST'])
 def criar_usuario():
     dados = request.get_json()
     nome = dados.get('nome')
@@ -26,12 +26,12 @@ def criar_usuario():
     return jsonify(usuario)
 
 #2- Listar todos os Usuarios
-@main.route('/usuarios', methods=['GET'])
+@app.route('/usuarios', methods=['GET'])
 def listar_usuarios():
     return jsonify(usuarios_lista)
 
 #3- Listar um Usuario
-@main.route('/usuarios/<string:CPF>', methods=['GET'])
+@app.route('/usuarios/<string:CPF>', methods=['GET'])
 def listarUmUsario(cpf):
     for usuario in usuarios_lista:
         try:
@@ -42,7 +42,7 @@ def listarUmUsario(cpf):
     return jsonify({"Nenhum Usuário Encontrado"})
 
 #4- Deletar um Usuario
-@main.route('/usuarios/<string:CPF>', methods=['DELETE'])
+@app.route('/usuarios/<string:CPF>', methods=['DELETE'])
 def deletarUsuario(cpf):
     for usuario in usuarios_lista:
         try:
