@@ -26,7 +26,14 @@ class TestUsuario(unittest.TestCase):
 
     #Teste Listar todos os usuarios
     def testListarUsuarios(self):
-        
+        # Cria o usuário primeiro
+        self.client.post("/usuarios", json={
+            'nome': 'Beatriz',
+            'email': 'beatriz@teste.com',
+            'senha': '123456',
+            'CPF': '12345678900'
+            })
+
         response = self.client.get("/usuarios" )
         json_data = response.get_json()
 
