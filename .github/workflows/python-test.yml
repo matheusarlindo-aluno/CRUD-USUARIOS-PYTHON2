@@ -1,5 +1,6 @@
-name: Python Application Tests
 
+name: Python Application Tests
+ 
 on:
   push:
     branches:

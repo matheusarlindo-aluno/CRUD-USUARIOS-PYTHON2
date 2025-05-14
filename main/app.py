@@ -32,23 +32,23 @@ def listar_usuarios():
 
 #3- Listar um Usuario
 @app.route('/usuarios/<string:CPF>', methods=['GET'])
-def listarUmUsario(cpf):
+def listarUmUsario(CPF):
     for usuario in usuarios_lista:
         try:
-            if usuario["CPF"] == cpf:
+            if usuario["CPF"] == CPF:
                 return jsonify(usuario)
         except KeyError:
             continue
-    return jsonify({"Nenhum Usuário Encontrado"})
+    return jsonify({"mensagem": "Nenhum Usuário Encontrado"})
 
 #4- Deletar um Usuario
 @app.route('/usuarios/<string:CPF>', methods=['DELETE'])
-def deletarUsuario(cpf):
+def deletarUsuario(CPF):
     for usuario in usuarios_lista:
         try:
-            if usuario["CPF"] == cpf:
+            if usuario["CPF"] == CPF:
                 usuarios_lista.remove(usuario)
-                return jsonify({"Usuario Deletado com Sucesso"})
+                return jsonify({"mensagem": "Usuario Deletado com Sucesso"})
         except KeyError:
             continue
-    return jsonify({"Nenhum Usuário Encontrado"})
+    return jsonify({"mensagem": "Nenhum Usuário Encontrado"})
